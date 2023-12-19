@@ -1,11 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useReducer } from 'react';
+
+import make2DArray from './make2DArray';
+
+function reducer(state, action) {
+  return state;
+}
+
+function makeInitialState() {
+  return { board: make2DArray(3, 3, null) };
+}
 
 export default function App() {
+  const [state, dispatch] = useReducer(reducer, undefined, makeInitialState);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>{JSON.stringify(state, null, 2)}</Text>
+      <StatusBar style='auto' />
     </View>
   );
 }
@@ -15,6 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
