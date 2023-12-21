@@ -6,7 +6,12 @@ export default function Board(props) {
   return (
     <View styles={styles.container}>
       {props.board.map((row, rowIndex) => (
-        <Row key={rowIndex} row={row} />
+        <Row
+          dispatch={props.dispatch}
+          key={rowIndex}
+          row={row}
+          rowIndex={rowIndex}
+        />
       ))}
     </View>
   );

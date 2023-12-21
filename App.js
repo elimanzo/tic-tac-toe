@@ -5,12 +5,37 @@ import { useReducer } from 'react';
 import make2DArray from './make2DArray';
 import Board from './Board';
 
+function copyBoard(board) {
+  return board.map((row) => [...row]);
+}
+
+function isValidMove(board, i, j) {
+  return board[i][j] == null;
+}
+
 function reducer(state, action) {
+  console.log(action.rowIndex, action.colIndex);
+  switch (action.type) {
+    case 'player-move': {
+      console.log(action.rowIndex, action.colIndex);
+      if (!isValidMove(state.board, action.rowIndex, action.colIndex)) {
+        // Alert later
+        return state;
+      }
+      const newBoard = copyBoard(state.board);
+      newBoard[action.rowIndex][action.colIndex] = state.currentPlayer;
+      return {
+        ...state,
+        board: newBoard,
+        currentPlayer: state.currentPlayer === 'X' ? 'O' : 'X'
+      };
+    }
+  }
   return state;
 }
 
 function makeInitialState() {
-  return { board: make2DArray(3, 3, 'O') };
+  return { board: make2DArray(3, 3, null), currentPlayer: 'X' };
 }
 
 export default function App() {
@@ -18,7 +43,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tic-Tac-Toe</Text>
-      <Board board={state.board} />
+      <Board board={state.board} dispatch={dispatch} />
       <StatusBar style='auto' />
     </View>
   );

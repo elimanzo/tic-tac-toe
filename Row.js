@@ -6,7 +6,13 @@ export function Row(props) {
   return (
     <View styles={styles.container}>
       {props.row.map((cell, colIndex) => (
-        <Cell key={colIndex} cell={cell} />
+        <Cell
+          dispatch={props.dispatch}
+          key={colIndex}
+          cell={cell}
+          rowIndex={props.rowIndex}
+          colIndex={colIndex}
+        />
       ))}
     </View>
   );

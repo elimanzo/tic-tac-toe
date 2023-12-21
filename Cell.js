@@ -1,10 +1,19 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export function Cell(props) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        props.dispatch({
+          type: 'player-move',
+          rowIndex: props.rowIndex,
+          colIndex: props.colIndex
+        })
+      }
+    >
       {props.cell != null && <Text style={styles.text}>{props.cell}</Text>}
-    </View>
+    </TouchableOpacity>
   );
 }
 
