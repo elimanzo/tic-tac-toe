@@ -2,15 +2,15 @@ import { View, StyleSheet } from 'react-native';
 
 import { Cell } from './Cell';
 
-export function Row(props) {
+export function Row({ row, rowIndex, dispatch }) {
   return (
     <View styles={styles.container}>
-      {props.row.map((cell, colIndex) => (
+      {row.map((cell, colIndex) => (
         <Cell
-          dispatch={props.dispatch}
+          dispatch={dispatch}
           key={colIndex}
           cell={cell}
-          rowIndex={props.rowIndex}
+          rowIndex={rowIndex}
           colIndex={colIndex}
         />
       ))}

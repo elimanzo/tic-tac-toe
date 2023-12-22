@@ -2,27 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useReducer } from 'react';
 
+import copy2DArray from './copy2DArray';
 import make2DArray from './make2DArray';
 import Board from './Board';
-
-function copyBoard(board) {
-  return board.map((row) => [...row]);
-}
 
 function isValidMove(board, i, j) {
   return board[i][j] == null;
 }
 
 function reducer(state, action) {
-  console.log(action.rowIndex, action.colIndex);
   switch (action.type) {
     case 'player-move': {
-      console.log(action.rowIndex, action.colIndex);
       if (!isValidMove(state.board, action.rowIndex, action.colIndex)) {
         // Alert later
         return state;
       }
-      const newBoard = copyBoard(state.board);
+      const newBoard = copy2DArray(state.board);
       newBoard[action.rowIndex][action.colIndex] = state.currentPlayer;
       return {
         ...state,
