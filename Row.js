@@ -21,6 +21,8 @@ export function Row({ row, rowIndex, dispatch }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    gap: 8
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 20,
+  },
 });

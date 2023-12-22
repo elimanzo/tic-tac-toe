@@ -15,8 +15,10 @@ export default function Board({ board, dispatch }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'grey',
-    gap: 8,
-    padding: 8,
-    borderRadius: 8
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 20,
+    padding: 20,
+    borderRadius: 15,
+  },
 });

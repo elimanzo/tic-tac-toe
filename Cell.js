@@ -1,19 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export function Cell({ cell, rowIndex, colIndex, dispatch }) {
+  const Container = !cell ? TouchableOpacity : View;
+  const onPress = !cell
+    ? () => dispatch({ type: 'player-move', rowIndex, colIndex })
+    : undefined;
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() =>
-        dispatch({
-          type: 'player-move',
-          rowIndex,
-          colIndex
-        })
-      }
-    >
-      {cell != null && <Text style={styles.text}>{cell}</Text>}
-    </TouchableOpacity>
+    <Container style={styles.container} onPress={onPress}>
+      {cell && <Text style={styles.text}>{cell}</Text>}
+    </Container>
   );
 }
 
@@ -24,10 +19,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: 'lightblue',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   text: {
     color: 'blue',
-    fontSize: 60
-  }
+    fontSize: 60,
+  },
 });
