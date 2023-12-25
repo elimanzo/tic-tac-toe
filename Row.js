@@ -2,10 +2,10 @@ import { View, StyleSheet } from 'react-native';
 
 import { Cell } from './Cell';
 
-export function Row({ row, rowIndex, dispatch }) {
+export function Row({ cells, rowIndex, dispatch }) {
   return (
-    <View styles={styles.container}>
-      {row.map((cell, colIndex) => (
+    <View style={styles.container}>
+      {cells.map((cell, colIndex) => (
         <Cell
           dispatch={dispatch}
           key={colIndex}
@@ -21,8 +21,6 @@ export function Row({ row, rowIndex, dispatch }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 20,
+    gap: 8,
   },
 });

@@ -4,9 +4,14 @@ import { Row } from './Row';
 
 export default function Board({ board, dispatch }) {
   return (
-    <View styles={styles.container}>
+    <View style={styles.container}>
       {board.map((row, rowIndex) => (
-        <Row dispatch={dispatch} key={rowIndex} row={row} rowIndex={rowIndex} />
+        <Row
+          key={rowIndex}
+          cells={row}
+          dispatch={dispatch}
+          rowIndex={rowIndex}
+        />
       ))}
     </View>
   );
@@ -14,11 +19,9 @@ export default function Board({ board, dispatch }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'grey',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 20,
-    padding: 20,
-    borderRadius: 15,
+    backgroundColor: 'lightblue',
+    gap: 8,
+    padding: 8,
+    borderRadius: 8,
   },
 });
