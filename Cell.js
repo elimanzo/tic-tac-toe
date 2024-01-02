@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export function Cell({ cell, rowIndex, colIndex, dispatch }) {
-  const Container = cell == null ? TouchableOpacity : View;
+export function Cell({ cell, rowIndex, colIndex, dispatch, isGameOver }) {
+  const Container = cell == null && !isGameOver ? TouchableOpacity : View;
   const onPress =
     cell == null
       ? () => dispatch({ type: 'player-move', rowIndex, colIndex })

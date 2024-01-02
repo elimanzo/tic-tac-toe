@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 
 import { Cell } from './Cell';
 
-export function Row({ cells, rowIndex, dispatch }) {
+export function Row({ cells, rowIndex, dispatch, isGameOver }) {
   return (
     <View style={styles.container}>
       {cells.map((cell, colIndex) => (
@@ -12,6 +12,7 @@ export function Row({ cells, rowIndex, dispatch }) {
           cell={cell}
           rowIndex={rowIndex}
           colIndex={colIndex}
+          isGameOver={isGameOver}
         />
       ))}
     </View>
