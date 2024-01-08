@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     bottom: 135,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: 'green',
+    backgroundColor: '#27AE60',
   },
   newGameButtonText: {
     fontSize: 18,
